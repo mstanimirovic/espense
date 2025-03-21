@@ -43,6 +43,7 @@ bool cli_insert_menu(database db) {
     string name = get_string("name >> ");
     string category = get_string("category >> ");
     int32_t amount = get_integer("amount >> ");
+    string desc = get_string("description >> ");
 
     int32_t user_id = db_id_by_name(db, "users", name);
     int32_t category_id = db_id_by_name(db, "categories", category);
@@ -55,7 +56,8 @@ bool cli_insert_menu(database db) {
         category_id = db_insert_name(db, "categories", category);
     }
 
-    (void)db_insert_expense(db, user_id, category_id, amount, datetime());
+    string date = datetime();
+    (void)db_insert_expense(db, user_id, category_id, amount, desc, date);
 
     free(category);
     free(name);

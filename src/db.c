@@ -79,7 +79,7 @@ int32_t db_insert_name(database db, string table, string_view name) {
     return id;
 }
 
-bool db_insert_expense(database db, int32_t user_id, int32_t category_id, double amount, string date) {
+bool db_insert_expense(database db, int32_t user_id, int32_t category_id, double amount, string desc, string date) {
     sqlite3_stmt *stmt;
     int32_t rc = sqlite3_prepare_v2(db, QUERY_INSERT_EXPENSE, -1, &stmt, 0);
     if (rc != SQLITE_OK) {
@@ -91,7 +91,8 @@ bool db_insert_expense(database db, int32_t user_id, int32_t category_id, double
     sqlite3_bind_int(stmt, 1, user_id);
     sqlite3_bind_int(stmt, 2, category_id);
     sqlite3_bind_double(stmt, 3, amount);
-    sqlite3_bind_text(stmt, 4, date, -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 4, desc, -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 5, date, -1, SQLITE_STATIC);
 
     rc = sqlite3_step(stmt);
     if (rc != SQLITE_DONE) {

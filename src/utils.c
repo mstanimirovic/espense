@@ -60,6 +60,7 @@ string datetime(void) {
     FILE* fptr = popen("date", "r");
     string buffer = (string)malloc(sizeof(char) * 80);
     fgets(buffer, 80, fptr);
+    strip(buffer);
     pclose(fptr);
     return buffer;
 }
