@@ -1,4 +1,5 @@
 #include "espense.h"
+#include "db.h"
 
 database db = NULL;
 
