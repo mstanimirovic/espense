@@ -79,7 +79,7 @@ int32_t db_insert_name(database db, string table, string_view name) {
     return id;
 }
 
-bool db_insert_expense(database db, int32_t user_id, int32_t category_id, double amount, string desc, string date) {
+bool db_insert_expense(database db, int32_t user_id, int32_t category_id, float amount, string desc, string date) {
     sqlite3_stmt *stmt;
     int32_t rc = sqlite3_prepare_v2(db, QUERY_INSERT_EXPENSE, -1, &stmt, 0);
     if (rc != SQLITE_OK) {

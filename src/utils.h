@@ -14,6 +14,7 @@ typedef const char* string_view;
 // input functions
 int32_t get_integer(string_view prompt);
 string get_string(string_view prompt);
+float get_float(string_view prompt);
 
 int32_t str_to_int(string_view str);
 void zero_out(string str, int32_t n);

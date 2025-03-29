@@ -42,7 +42,7 @@ void cli_menu(database db) {
 bool cli_insert_menu(database db) {
     string name = get_string("name >> ");
     string category = get_string("category >> ");
-    int32_t amount = get_integer("amount >> ");
+    float amount = get_float("amount >> ");
     string desc = get_string("description >> ");
 
     int32_t user_id = db_id_by_name(db, "users", name);

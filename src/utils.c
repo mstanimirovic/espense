@@ -56,6 +56,15 @@ string get_string(string_view prompt) {
     }
 }
 
+float get_float(string_view prompt) {
+    float result;
+    printf("%s", prompt);
+    scanf("%f", &result);
+    fflush(stdin);
+    while (getchar() != '\n') {}
+    return result;
+}
+
 string datetime(void) {
     FILE* fptr = popen("date", "r");
     string buffer = (string)malloc(sizeof(char) * 80);
